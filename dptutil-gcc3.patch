@@ -1,0 +1,64 @@
+diff -ur raidmgt-3.31/dptutil/dynsize.cpp raidmgt-3.31-/dptutil/dynsize.cpp
+--- raidmgt-3.31/dptutil/dynsize.cpp	2002-08-13 17:02:46.000000000 +0200
++++ raidmgt-3.31-/dptutil/dynsize.cpp	2003-08-13 12:01:04.000000000 +0200
+@@ -67,11 +67,7 @@
+         char *buf = new char[curSize];
+         if ( buf != NULL )
+         {
+-#if !defined __MWERKS__        
+-            setb(buf, buf + curSize, 1);
+-#else            
+             pubsetbuf (buf, curSize);
+-#endif            
+             setg(buf, buf, buf);
+             setp(NULL, NULL);
+             allocatedSize = curSize;
+diff -ur raidmgt-3.31/dptutil/dynsize.h raidmgt-3.31-/dptutil/dynsize.h
+--- raidmgt-3.31/dptutil/dynsize.h	2002-08-13 17:02:46.000000000 +0200
++++ raidmgt-3.31-/dptutil/dynsize.h	2003-08-13 11:59:04.000000000 +0200
+@@ -22,9 +22,12 @@
+ *****************************************************************************/
+ 
+ /*** INCLUDES ***/
+-#include <iostream.h>
++#include <iostream>
++#include <streambuf>
+ #include <stdio.h>
+ 
++using namespace std;
++
+ 
+ /*** DEFINES ***/
+ #ifdef _DPT_DOS
+diff -ur raidmgt-3.31/dptutil/flash.cpp raidmgt-3.31-/dptutil/flash.cpp
+--- raidmgt-3.31/dptutil/flash.cpp	2002-08-13 17:02:47.000000000 +0200
++++ raidmgt-3.31-/dptutil/flash.cpp	2003-08-13 12:02:47.000000000 +0200
+@@ -31,13 +31,15 @@
+ 
+ #include <stdio.h>
+ #include <ctype.h>
+-#include <fstream.h>
++#include <fstream>
+ #if defined _DPT_WIN_NT
+ #include <strstrea.h>
+ #else
+-#include <strstream.h>
++#include <sstream>
+ #endif
+ 
++using namespace std;
++
+ extern char* EventStrings[];
+ /*** CONSTANTS ***/
+ enum output_Type
+diff -ur raidmgt-3.31/dptutil/makefile raidmgt-3.31-/dptutil/makefile
+--- raidmgt-3.31/dptutil/makefile	2002-08-30 20:50:02.000000000 +0200
++++ raidmgt-3.31-/dptutil/makefile	2003-08-13 12:02:48.000000000 +0200
+@@ -1,6 +1,6 @@
+ PROG=raidutil
+ extra_cflags=
+-I= -I/usr/include/g++ -I.
++I=  -I.
+ 
+ CC=g++
+ C=g++
