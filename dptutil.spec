@@ -3,11 +3,12 @@ Summary:	DPT/Adaptec Storage Management software
 Summary(pl):	Oprogramowanie do zarz±dzania macierzami DPT/Adaptec
 Name:		dptutil
 Version:	3.31
-Release:	1
+Release:	2
 License:	BSD
 Group:		Base
 Source0:	http://www.interlude.eu.org/~ad/raidmgt/raidmgt-3.31.tar.gz
 # Source0-md5:	a7d0df0ff350ea5ad080e9bd8a3798a3
+Patch0:		%{name}-gcc3.patch
 URL:		http://opensource.adaptec.com/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -21,6 +22,7 @@ Oprogramowanie do zarz±dzania macierzami DPT/Adaptec.
 
 %prep
 %setup -q -n %{_orgname}-%{version}
+%patch0 -p1
 
 %build
 for pkg in dptutil dpteng; do
