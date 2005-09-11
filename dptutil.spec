@@ -10,6 +10,7 @@ Source0:	http://www.interlude.eu.org/~ad/raidmgt/raidmgt-3.31.tar.gz
 # Source0-md5:	a7d0df0ff350ea5ad080e9bd8a3798a3
 Patch0:		%{name}-gcc3.patch
 URL:		http://opensource.adaptec.com/
+BuildRequires:	libstdc++-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_sbindir		/sbin
