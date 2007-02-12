@@ -1,6 +1,6 @@
 %define	_orgname	raidmgt
 Summary:	DPT/Adaptec Storage Management software
-Summary(pl):	Oprogramowanie do zarz±dzania macierzami DPT/Adaptec
+Summary(pl.UTF-8):   Oprogramowanie do zarzÄ…dzania macierzami DPT/Adaptec
 Name:		dptutil
 Version:	3.31
 Release:	2
@@ -18,8 +18,8 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 DPT/Adaptec Storage Management software.
 
-%description -l pl
-Oprogramowanie do zarz±dzania macierzami DPT/Adaptec.
+%description -l pl.UTF-8
+Oprogramowanie do zarzÄ…dzania macierzami DPT/Adaptec.
 
 %prep
 %setup -q -n %{_orgname}-%{version}
